@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h2 id="private-ethereum-network-reform-guide">1. Private Ethereum Network Reform Guide</h2>
+<h3 id="copy-the-necessary-files">1.1. Copy the necessary files</h3>
+<ul>
+<li><code>man/</code> linux man style manuals for <a href="http://hems.py">hems.py</a></li>
+<li><code>README.md</code> reform guide</li>
+<li><code>reformTPTnet.sh</code> shell script to reform Private Ethereum Network</li>
+<li><code>tpt_genesis.json</code> initial file for blockchain</li>
+<li><code>hems.py</code> interface to open the market</li>
+<li><code>open_market.js</code> interface to open the market</li>
+<li><code>buy.js</code> interface to offer bid</li>
+<li><code>sell.js</code> interface to offer ask</li>
+<li><code>get_result.js</code> interface to get matching result</li>
+<li><code>close_market.js</code> interface to close the market and get the matching result</li>
+<li><code>auto_open.js</code> interface to automate the open and close market</li>
+<li><code>newMarket.abi</code> ABI(Application Binary Interface) for new market contract</li>
+<li><code>contractAddress.json</code> address for smart contract</li>
+</ul>
+<h3 id="move-to-the-copied-folder">1.2. Move to the copied folder</h3>
+<pre class=" language-shell"><code class="prism  language-shell">cd newMarket/
+</code></pre>
+<h3 id="change-mode-for-reformtptnet.sh">1.3. Change mode for <a href="http://reformTPTnet.sh">reformTPTnet.sh</a></h3>
+<pre class=" language-shell"><code class="prism  language-shell">chmod +x reformTPTnet.sh
+</code></pre>
+<h3 id="execute-reformtptnet.sh">1.4. Execute <a href="http://reformTPTnet.sh">reformTPTnet.sh</a></h3>
+<pre class=" language-shell"><code class="prism  language-shell">./reformTPTnet.sh
+</code></pre>
+<h3 id="execute-ethereum-client-console">1.5. Execute Ethereum client console</h3>
+<pre class=" language-shell"><code class="prism  language-shell">/home/pi/go-ethereum/build/bin/geth --datadir "./tptnet" attach
+</code></pre>
+<h3 id="connect-master-node">1.6. Connect Master Node</h3>
+<pre><code>&gt; admin.addPeer("enode://a7a26f1340b50e5ffedad80803f2faf8e87966ebbad0042d403692919f9c773b9262d23481f525db302b59bac91cb13ec2e8807cbcc8e7da3aeb0c16507d509e@137.194.211.52:30303?discport=0")
+</code></pre>
+<h3 id="check-connection">1.7. Check Connection</h3>
+<pre><code>&gt; admin.peers
+</code></pre>
+<h3 id="wait-sync">1.8. Wait Sync</h3>
+<pre><code>&gt; eth.syncing
+</code></pre>
+<p><em>Note: Need to wait until <code>false</code>. <code>false</code> means that your Geth is up to date.</em></p>
+<h2 id="interface-smart-contract">2. Interface Smart Contract</h2>
+<h3 id="open-market">2.1. Open Market</h3>
+<pre class=" language-shell"><code class="prism  language-shell">node open_market.js [timeslot]
+</code></pre>
+<p><em>Note: <code>timeslot</code> must be unsigned integer from 0 to 2^256-1. This is for manually open the market.</em></p>
+<h3 id="send-offer">2.2. Send Offer</h3>
+<pre class=" language-shell"><code class="prism  language-shell">python hems.py
+</code></pre>
+<p><em>Note: if same RPi offers multiple times then last offer override previous offers.<br>
+To make matching result, at least 4 RPi are needed - 2 RPi as buyer and 2 RPi as seller.</em></p>
+<h3 id="close-market">2.3. Close Market</h3>
+<pre class=" language-shell"><code class="prism  language-shell">node close_market.js
+</code></pre>
+<h3 id="openclose-market-automatically">2.4. Open/Close Market Automatically</h3>
+<pre class=" language-shell"><code class="prism  language-shell">node auto_open.js [market cycle]
+</code></pre>
+<p><em>Note: <code>market cycle</code> is in minutes support unsigned float. If <code>node auto_open.js 0.1</code> then market open and close every 6 seconds.</em></p>
+</div>
+</body>
+
+</html>

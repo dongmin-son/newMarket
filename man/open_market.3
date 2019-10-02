@@ -1,0 +1,37 @@
+.\" To see manual on terminal
+.\" groff -man -Tascii open_market.3
+.\" To get PostScript file
+.\" groff -t -e -mandoc -Tps open_market.3 > open_market.ps
+
+.TH open_market 3 "October 1,2019" "version 0.2" "User Manuals"
+.SH NAME
+open_market.js \- Open market
+.SH SYNOPSIS
+node open_market.js [timeslot]
+.SH DESCRIPTION
+.B node
+is to invoke node(1) with
+.I open_market.js
+which is Javascript code to open market for specific timeslot.
+.I [timeslot]
+is unsigned integer from 0 to (2^256)-1.
+.SH FILES
+.IP contractAddress_ts.json
+json file contains address of market contracts on blockchain.
+.IP newMarket.abi
+ABI(Application Binary Interface) of market contract.
+.SH DIAGNOSTICS
+The following diagnostics may be issued on stderr:
+
+Error: Can not find timeslot.
+.RS
+timeslot must be specified as a parameter.
+.RE
+Error: timeslot must be positive value.
+.RS
+timeslot must be unsigned integer from 0 to (2^256)-1.
+.RE
+.SH AUTHOR
+Dongmin Son <dongmin.son@telecom-paristech.fr>
+.SH SEE ALSO
+.BR node(1)

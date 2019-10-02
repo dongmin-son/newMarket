@@ -1,0 +1,95 @@
+.\" To see manual on terminal
+.\" groff -man -Tascii hems.3
+.\" To get PostScript file
+.\" groff -t -e -mandoc -Tps hems.3 > hems.ps
+
+.TH hems 3 "October 1,2019" "version 0.2" "User Manuals"
+.SH NAME
+hems.py \- sample code to communicate with smart contracts on blockchain using Javascript files
+.SH SYNOPSIS
+python hems.py
+.SH DESCRIPTION
+.B python
+is to invoke python(1) with
+.I hems.py
+which is sample code to send bid and ask to smart contracts on blockchain. After sending the offer, HEMS try to get the matching result from the blockchain.
+.SH FILES
+.IP sell.js
+javascript file to send ask to blockchain. See sell(3) for further details.
+.IP buy.js
+javascript file to send bid to blockchain. See buy(3) for further details.
+.IP get_result.js
+javascript file to get matching result from blockchain. See get_result(3) for further details.
+.SH OUTPUT
+The following logs may be printed on stdout:
+.IP type
+Bid or Ask.
+.IP id
+Address of the sender.
+.IP price
+Offered or matched price.
+.IP volume
+Offered or matched volume.
+.SH EXAMPLES
+
+For the response of sending offer, the following logs may be printed on stdout:
+
+.RS
+Offer is registered as below
+.RE
+.RS
+==============================================
+.RE
+.RS
+type : Bid
+.RE
+.RS
+id : 0x2D450a8892DCd6CCe7A3839B88a9070B67820B6F
+.RE
+.RS
+price : 1900
+.RE
+.RS
+volume : 10000
+.RE
+.RS
+==============================================
+.RE
+
+For the response of getting matching result, the following logs may be printed on stdout:
+
+.RS
+Offer is matched as below
+.RE
+.RS
+==============================================
+.RE
+.RS
+type : Bid
+.RE
+.RS
+id : 0x2D450a8892DCd6CCe7A3839B88a9070B67820B6F
+.RE
+.RS
+price : 1800
+.RE
+.RS
+volume : 10000
+.RE
+.RS
+==============================================
+.RE
+
+.SH DIAGNOSTICS
+The following diagnostics may be issued on stderr:
+
+Error: Market is closed.
+.RS
+HEMS can only send offers when market is opened. You can open the market using open_market.js. See
+.B open_market(3)
+for further details.
+.RE
+.SH AUTHOR
+Dongmin Son <dongmin.son@telecom-paristech.fr>
+.SH SEE ALSO
+.BR python(1)

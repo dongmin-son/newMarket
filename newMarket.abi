@@ -1,0 +1,219 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"name": "volume",
+				"type": "int256"
+			}
+		],
+		"name": "buy",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "close",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "ts",
+				"type": "uint256"
+			}
+		],
+		"name": "open",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"name": "volume",
+				"type": "int256"
+			}
+		],
+		"name": "sell",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "ts",
+				"type": "uint256"
+			}
+		],
+		"name": "Opened",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "ts",
+				"type": "uint256"
+			}
+		],
+		"name": "Closed",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "volume",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "id",
+				"type": "address"
+			}
+		],
+		"name": "BidMade",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "volume",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "id",
+				"type": "address"
+			}
+		],
+		"name": "AskMade",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "volume",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "id",
+				"type": "address"
+			}
+		],
+		"name": "MatchedBid",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "price",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "volume",
+				"type": "int256"
+			},
+			{
+				"indexed": false,
+				"name": "id",
+				"type": "address"
+			}
+		],
+		"name": "MatchedAsk",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "WarningMarketOpened",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [],
+		"name": "WarningMarketClosed",
+		"type": "event"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "opened",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "timeslot",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	}
+]

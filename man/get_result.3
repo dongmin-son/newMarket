@@ -1,0 +1,29 @@
+.\" To see manual on terminal
+.\" groff -man -Tascii get_result.3
+.\" To get PostScript file
+.\" groff -t -e -mandoc -Tps get_result.3 > get_result.ps
+
+.TH get_result 3 "October 1,2019" "version 0.2" "User Manuals"
+.SH NAME
+get_result.js \- get matching result from blockchain
+.SH SYNOPSIS
+node get_result.js [sender address]
+.SH DESCRIPTION
+.B node
+is to invoke node(1) with
+.I get_result.js
+which is Javascript code to get matching result from settlement contract on blockchain.
+.I [sender address]
+is 20 byte value for Ethereum address.
+The address is composed of the prefix "0x" and 40 hexadecimal digits.
+An example of the address is "0x2c5bb87c768e35ca5c47d78e714e16fc45124338".
+To lookup the address, use "geth account list"
+.SH FILES
+.IP contractAddress_ts.json
+json file contains addresses of contracts on blockchain.
+.IP newMarket.abi
+ABI(Application Binary Interface) of market contract.
+.SH AUTHOR
+Dongmin Son <dongmin.son@telecom-paristech.fr>
+.SH SEE ALSO
+.BR node(1)

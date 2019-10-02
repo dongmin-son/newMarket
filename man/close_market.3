@@ -1,0 +1,31 @@
+.\" To see manual on terminal
+.\" groff -man -Tascii close_market.3
+.\" To get PostScript file
+.\" groff -t -e -mandoc -Tps close_market.3 > close_market.ps
+
+.TH close_market 3 "October 1,2019" "version 0.2" "User Manuals"
+.SH NAME
+close_market.js \- Close market
+.SH SYNOPSIS
+node close_market.js
+.SH DESCRIPTION
+.B node
+is to invoke node(1) with
+.I close_market.js
+which is Javascript code to close market.
+.SH FILES
+.IP contractAddress_ts.json
+json file contains address of market contracts on blockchain.
+.IP newMarket.abi
+ABI(Application Binary Interface) of market contract.
+.SH DIAGNOSTICS
+The following diagnostics may be issued on stderr:
+
+Error: Closed event is not fired. Please see the receipt as below.
+.RS
+Unknown error. Need to analyze with the logs.
+.RE
+.SH AUTHOR
+Dongmin Son <dongmin.son@telecom-paristech.fr>
+.SH SEE ALSO
+.BR node(1)

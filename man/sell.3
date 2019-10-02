@@ -1,0 +1,35 @@
+.\" To see manual on terminal
+.\" groff -man -Tascii sell.3
+.\" To get PostScript file
+.\" groff -t -e -mandoc -Tps sell.3 > sell.ps
+
+.TH sell 3 "October 1,2019" "version 0.2" "User Manuals"
+.SH NAME
+sell.js \- Send ask to blockchain
+.SH SYNOPSIS
+node sell.js [price] [volume]
+.SH DESCRIPTION
+.B node
+is to invoke node(1) with
+.I sell.js
+which is Javascript code to send ask to market contract on blockchain.
+.I [price]
+is signed integer from -(2^255)+1 to (2^255)-1. The unit is cent euro.
+.I [volume]
+is signed integer from -(2^255)+1 to (2^255)-1. The unit is watt hour.
+.SH FILES
+.IP contractAddress_ts.json
+json file contains address of market contracts on blockchain.
+.IP newMarket.abi
+ABI(Application Binary Interface) of market contract.
+.SH DIAGNOSTICS
+The following diagnostics may be issued on stderr:
+
+Error: Can not find price and volume.
+.RS
+Price and volume must be specified as a parameter.
+.RE
+.SH AUTHOR
+Dongmin Son <dongmin.son@telecom-paristech.fr>
+.SH SEE ALSO
+.BR node(1)
