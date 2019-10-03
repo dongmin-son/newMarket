@@ -31,15 +31,19 @@ web3.eth.getAccounts((error, result) => {
     console.error("\tPlease excute \'geth\' first!\n")
     process.exit(1);
   }
-  account = result[0]
-  MarketContract.methods.buy(Price, Volume)
-  .send({
-    from: account,
-    gas: 60000000,
-    gasPrice: '1000000000'
-  })
-  .then(function(receipt) {
-    console.log(JSON.stringify(receipt));
-    web3.currentProvider.connection.close();
+  account = result[0];
+  web3.eth.personal.unlockAccount(account, "tpt_123", 0)
+  .then(() => {
+    console.log(account+' Account unlocked!');
+    MarketContract.methods.buy(Price, Volume)
+    .send({
+      from: account,
+      gas: 60000000,
+      gasPrice: '1000000000'
+    })
+    .then(function(receipt) {
+      console.log(JSON.stringify(receipt));
+      web3.currentProvider.connection.close();
+    });
   });
 });

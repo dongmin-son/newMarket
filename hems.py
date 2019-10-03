@@ -58,8 +58,8 @@ if "events" in receipt:
 
         # Parse matched price and volume
         matched_id = event["returnValues"]["id"]
-        matched_price = int(event["returnValues"]["price"]["_hex"],16)
-        matched_volume = int(event["returnValues"]["volume"]["_hex"],16)
+        matched_price = event["returnValues"]["price"]
+        matched_volume = event["returnValues"]["volume"]
 
         # print matching result for mine
         if matched_volume == 0:

@@ -1,11 +1,15 @@
+*Date: October 3rd, 2019*
+*Author: Dongmin SON (dongmin.son@telecom-paristech.fr)*
+
 ## 1. Private Ethereum Network Reform Guide
 
 ### 1.1. Copy the necessary files
   * `man/` linux man style manuals for hems.py
-  * `README.md` reform guide
+  * `README.md` reformation guide for Ethereum private network
+  * `geth` Ethereum client version 1.9.5
   * `reformTPTnet.sh` shell script to reform Private Ethereum Network
   * `tpt_genesis.json` initial file for blockchain
-  * `hems.py` interface to open the market
+  * `hems.py` python sample code for HEMS
   * `open_market.js` interface to open the market
   * `buy.js` interface to offer bid
   * `sell.js` interface to offer ask
@@ -42,7 +46,7 @@ chmod +x reformTPTnet.sh
 ### 1.6. Connect Master Node
 
 ```
-> admin.addPeer("enode://0cf44e1684122d83e51e583168881d0660d374cf175f9797ca89e03dd4a12a87cd038ab02b471210ac3ca186ad8e4112baba37f17b66783c43c1876d14468d97@137.194.211.52:30303?discport=0")
+> admin.addPeer("enode://8b99464157f0e2c7e8c1b97b0a184bccf848ccdd5af40ebac8f7e469ecaa5ec00beded44ad2246301ad27a707fd16eee1325a332454adcae6faf78020d5bb637@137.194.211.52:30303?discport=0")
 ```
 
 ### 1.7. Check Connection
@@ -51,6 +55,9 @@ chmod +x reformTPTnet.sh
 > admin.peers
 ```
 
+*Note: If empty array "[]" is displayed then try addPeer again after several minutes.
+Sometimes it takes time to operate geth properly.*
+
 ### 1.8. Wait Sync
 
 ```
@@ -58,6 +65,31 @@ chmod +x reformTPTnet.sh
 ```
 
 *Note: Need to wait until `false`. `false` means that your Geth is up to date.*
+
+### 1.9. Find account
+
+```
+> eth.accounts
+```
+
+*Note: digital currency - ETH is need to make transaction.
+Please let private network admin knows the account address to send ETH.*
+
+### 1.10. Check balance
+
+```
+> eth.getBalance(eth.accounts[0])
+```
+
+*Note: the unit is "wei" which is 1e-9 ETH. e.g., 1,000,000,000 wei = 1 ETH.*
+
+### 1.11. Unlock account
+
+```
+> personal.unlockAccount(eth.accounts[0], "tpt_123",0);
+```
+
+*Note: the account must be unlocked to make transaction.*
 
 ## 2. Interface Smart Contract
 
@@ -90,4 +122,5 @@ node close_market.js
 node auto_open.js [market cycle]
 ```
 
-*Note: `market cycle` is in minutes support unsigned float. If `node auto_open.js 0.1` then market open and close every 6 seconds.*
+*Note: `market cycle` is in minutes support unsigned float.
+If `node auto_open.js 0.1` then market open and close every 6 seconds.*

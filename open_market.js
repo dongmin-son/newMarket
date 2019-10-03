@@ -30,22 +30,26 @@ if(ts < 0){
 
 var account;
 web3.eth.getAccounts((error, result) => {
-  account = result[0]
-  console.log("\nOpening market for timeslot #" + ts + "....");
+  account = result[0];
+  web3.eth.personal.unlockAccount(account, "tpt_123", 0)
+  .then(() => {
+    console.log(account+' Account unlocked!');
+    console.log("\nOpening market for timeslot #" + ts + "....");
 
-  MarketContract.methods.open(ts)
-  .send({
-    from: account,
-    gas: 60000000,
-    gasPrice: '1000000000'
-  })
-  .then(function(receipt) {
-    if (receipt.events.Opened !== undefined) {
-      console.log("Opening market success! timeslot #" + receipt.events.Opened.returnValues.ts +"\n");
-    } else {
-      console.log("Error: MarketIsOpen event is not fired. Please see the receipt as below.\n");
-      console.log(receipt);
-    }
-    web3.currentProvider.connection.close();
+    MarketContract.methods.open(ts)
+    .send({
+      from: account,
+      gas: 60000000,
+      gasPrice: '1000000000'
+    })
+    .then(function(receipt) {
+      if (receipt.events.Opened !== undefined) {
+        console.log("Opening market success! timeslot #" + receipt.events.Opened.returnValues.ts +"\n");
+      } else {
+        console.log("Error: MarketIsOpen event is not fired. Please see the receipt as below.\n");
+        console.log(receipt);
+      }
+      web3.currentProvider.connection.close();
+    });
   });
 });

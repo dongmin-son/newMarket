@@ -34,8 +34,11 @@ if(cycle < 0){
 var account;
 web3.eth.getAccounts((error, result) => {
   account = result[0];
-
-  market_open();
+  web3.eth.personal.unlockAccount(account, "tpt_123", 0)
+  .then(() => {
+    console.log(account+' Account unlocked!');
+    market_open();
+  });
 });
 
 function market_open(){
