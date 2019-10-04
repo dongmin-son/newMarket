@@ -34,7 +34,6 @@ web3.eth.getAccounts((error, result) => {
   account = result[0];
   web3.eth.personal.unlockAccount(account, "tpt_123", 0)
   .then(() => {
-    console.log(account+' Account unlocked!');
     MarketContract.methods.buy(Price, Volume)
     .send({
       from: account,
