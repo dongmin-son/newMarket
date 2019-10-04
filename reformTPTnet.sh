@@ -1,5 +1,5 @@
 #!/bin/bash
-cp -f ./geth /home/pi/go-ethereum/build/bin/get
+cp -f ./geth /home/pi/go-ethereum/build/bin/
 rm -rf tptnet
 mkdir tptnet
 /home/pi/go-ethereum/build/bin/geth account new --datadir "./tptnet" --password <(echo tpt_123)
